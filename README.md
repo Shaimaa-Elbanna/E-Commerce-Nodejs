@@ -16,6 +16,8 @@ npm install
 
 The server should now be running on the specified port.
 
+[Link to Backend Project](https://e-commerce-jh7h.onrender.com/)
+
 ## Dependencies
 
 The project relies on the following dependencies:
