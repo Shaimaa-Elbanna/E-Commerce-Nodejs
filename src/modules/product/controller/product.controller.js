@@ -16,7 +16,7 @@ export const getProduct = asyncErrorHandler(async (req, res, next) => {
 
     const apiFeatures = new ApiFeatures(req.query, productModel.find().populate({ path: 'review'} ).populate(   { path:'brand',options: {select :"name"}}
     )
-).sort().fields().seacrch().filter().pagination()
+).sort().fields().seacrch().filter()
     
 
     const products = await apiFeatures.mongooseQuery
