@@ -14,13 +14,15 @@ export const getProduct = asyncErrorHandler(async (req, res, next) => {
 
 
 
-    const apiFeatures = new ApiFeatures(req.query, productModel.find().populate([{ path: 'review' }])).sort().fields().seacrch().filter()
+    const apiFeatures = new ApiFeatures(req.query, productModel.find().populate({ path: 'review'} ).populate(   { path:'brand',options: {select :"name"}}
+    )
+).sort().fields().seacrch().filter().pagination()
     
 
     const products = await apiFeatures.mongooseQuery
 
     for(let i=0; i<products.length ;i++){
-       let calcRating =0
+       const calcRating =0
        for (let j = 0; j < products[i].review.length; j++) {
         
         calcRating +=products[i].review[j].rate
@@ -66,7 +68,6 @@ export const createProduct = asyncErrorHandler(async (req, res, next) => {
     const { name, categoryId, subCategoryId, brandId, price, discount } = req.body
 
 
-    // const product = 
     if (!await subCategoryModel.findOne({ _id: subCategoryId, categoryId })) {
 
         next(new AppError('in-valid categoryId or subcategoryId', 400))

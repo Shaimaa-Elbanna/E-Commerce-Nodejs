@@ -7,7 +7,7 @@ import fs from "fs"
 const __direName= path.dirname(fileURLToPath(import.meta.url))
 
  export const fileValidation={
-    img:['image/png','image/jpeg','image/gif'],
+    img:['image/png','image/jpeg','image/gif',"image/webp"],
     pdf:[ 'application/pdf']
 
 }

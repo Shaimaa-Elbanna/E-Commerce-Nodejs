@@ -38,6 +38,11 @@ productSchema.virtual("review",{
     foreignField:"productId",
     localField:"_id"
 })
+productSchema.virtual("brand",{
+    ref:"Brand",
+    foreignField:"_id",
+    localField:"brandId"
+})
 
 
 const productModel = mongoose.models.Productd || model("Productd", productSchema)

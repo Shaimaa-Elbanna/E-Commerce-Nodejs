@@ -177,7 +177,7 @@ export const confirmEmail = asyncErrorHandler(async (req, res, next) => {
     const user = await userModel.updateOne({ email }, { confirmEmail: true })
 
 
-    return user.modifiedCount ? res.status(200).redirect("https://linkitqa.netlify.app/#/login") : next(new AppError('rejected email', 400))
+    return user.modifiedCount ? res.status(200).redirect(process.env.FRONT_END_PAGE) : next(new AppError('rejected email', 400))
 
 
 })
