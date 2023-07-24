@@ -28,32 +28,34 @@ const initServer = (express, app) => {
 
 
 
-  // const  whitelist = ['http://example1.com', 'http://example2.com']
+  const  whitelist = ['https://e-commerce-jh7h.onrender.com/']
 
-  // app.use(async(req,res,next)=>{
+  app.use(async(req,res,next)=>{
 
-  //   if(!whitelist.includes(req.header("origin"))){
-  //     return next (new AppError('Not Allowed By Cors Origin'))
-  //   }
-  //   for(const origin of whitelist){
+    if(!whitelist.includes(req.header("origin"))){
+      return next (new AppError('Not Allowed By Cors Origin'))
+    }
+    for(const origin of whitelist){
 
-  //     if(req.header("origin")==origin){
+      if(req.header("origin")==origin){
 
-  //       await res.header("Access-Control-Allow-Origin",origin)
-  //       break;
-  //     }
-  //   }
+        await res.header("Access-Control-Allow-Origin",origin)
+        break;
+      }
+    }
 
-  //   await res.header("Access-Control-Allow-Headers","*")
-  //   await res.header("Access-Control-Allow-Privot-Network","*")
-  //   await res.header("Access-Control-Allow-Methods","*")
-
-
-  // })
+    await res.header("Access-Control-Allow-Headers","*")
+    await res.header("Access-Control-Allow-Privot-Network","*")
+    await res.header("Access-Control-Allow-Methods","*")
 
 
+  })
+
+
+  
+  
   // app.use(cors())
-  app.options('*', cors());
+  // app.options('*', cors());
 
 
   app.use('/upload', express.static(path.join(__dirName, '../upload')))
