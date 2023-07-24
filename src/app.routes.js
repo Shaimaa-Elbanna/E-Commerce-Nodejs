@@ -28,40 +28,40 @@ const initServer = (express, app) => {
 
 
 
-  const  whitelist = ['http://localhost:3000']
+  // const  whitelist = ['http://localhost:3000']
 
-  app.use(async(req,res,next)=>{
+  // app.use(async(req,res,next)=>{
 
-    if(!whitelist.includes(req.header("origin"))){
-      return next (new AppError('Not Allowed By Cors Origin'))
-    }
-    for(const origin of whitelist){
+  //   if(!whitelist.includes(req.header("origin"))){
+  //     return next (new AppError('Not Allowed By Cors Origin'))
+  //   }
+  //   for(const origin of whitelist){
 
-      if(req.header("origin")==origin){
+  //     if(req.header("origin")==origin){
 
-        await res.header("Access-Control-Allow-Origin",origin)
-        break;
-      }
-    }
+  //       await res.header("Access-Control-Allow-Origin",origin)
+  //       break;
+  //     }
+  //   }
 
-    await res.header("Access-Control-Allow-Headers","*")
-    await res.header("Access-Control-Allow-Privit-Network","*")
+  //   await res.header("Access-Control-Allow-Headers","*")
+  //   await res.header("Access-Control-Allow-Privit-Network","*")
     
-    await res.header("Access-Control-Allow-Methods","*")
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200); // Respond with 200 for OPTIONS requests
-    }
+  //   await res.header("Access-Control-Allow-Methods","*")
+  //   if (req.method === 'OPTIONS') {
+  //     return res.sendStatus(200); // Respond with 200 for OPTIONS requests
+  //   }
 
-    next();
+  //   next();
 
 
-  })
+  // })
 
 
   
   
-  // app.use(cors())
-  // app.options('*', cors());
+  app.use(cors())
+  app.options('*', cors());
 
 
   app.use('/upload', express.static(path.join(__dirName, '../upload')))
