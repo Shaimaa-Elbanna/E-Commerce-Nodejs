@@ -28,7 +28,7 @@ const initServer = (express, app) => {
 
 
 
-  const  whitelist = ['https://e-commerce-jh7h.onrender.com/']
+  const  whitelist = ['http://localhost:3000']
 
   app.use(async(req,res,next)=>{
 
@@ -45,8 +45,14 @@ const initServer = (express, app) => {
     }
 
     await res.header("Access-Control-Allow-Headers","*")
-    await res.header("Access-Control-Allow-Privot-Network","*")
+    await res.header("Access-Control-Allow-Privit-Network","*")
+    
     await res.header("Access-Control-Allow-Methods","*")
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(200); // Respond with 200 for OPTIONS requests
+    }
+
+    next();
 
 
   })
