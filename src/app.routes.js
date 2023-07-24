@@ -26,8 +26,8 @@ const initServer = (express, app) => {
     }
   })
   
-  // app.use(cors())
-  app.use(cors({ origin: '*' }));
+  app.use(cors())
+  // app.use(cors({ origin: '*' }));
 
 
   app.use('/upload', express.static(path.join(__dirName, '../upload')))
