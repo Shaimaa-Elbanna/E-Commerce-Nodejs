@@ -14,7 +14,10 @@ import cloudinary from "../../../utilies/cloudinary.js";
 
 
 
-
+export const getAllUSers =asyncErrorHandler(async(req,res,next)=>{
+    const getUser=await userModel.find({})
+    res.status(200).json({message:"Done",getUser})
+})
 
 
 
