@@ -27,32 +27,13 @@ const initServer = (express, app) => {
   })
   const  whitelist = ['http://localhost:3000']
 
-  app.use(async(req,res,next)=>{
-
-    if(!whitelist.includes(req.header("origin"))){
-      return next (new AppError('Not Allowed By Cors Origin'))
-    }
-    for(const origin of whitelist){
-
-      if(req.header("origin")==origin){
-
-        await res.header("Access-Control-Allow-Origin",origin)
-        break;
-      }
-    }
-
-    await res.header("Access-Control-Allow-Headers","*")
-    await res.header("Access-Control-Allow-Privit-Network","*")
+  app.use(cors({
+    origin: whitelist,
+    allowedHeaders: '*',
+    exposedHeaders: '*',
+    methods: '*',
     
-    await res.header("Access-Control-Allow-Methods","*")
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200); // Respond with 200 for OPTIONS requests
-    }
-
-    next();
-
-
-  })
+  }))
   
 
 
@@ -75,7 +56,32 @@ const initServer = (express, app) => {
   app.use(globalErrorHandling)
 
 
+  // app.use(async(req,res,next)=>{
 
+  //   if(!whitelist.includes(req.header("origin"))){
+  //     return next (new AppError('Not Allowed By Cors Origin'))
+  //   }
+  //   for(const origin of whitelist){
+
+  //     if(req.header("origin")==origin){
+
+  //       await res.header("Access-Control-Allow-Origin",origin)
+  //       break;
+  //     }
+  //   }
+
+  //   await res.header("Access-Control-Allow-Headers","*")
+  //   await res.header("Access-Control-Allow-Privit-Network","*")
+    
+  //   await res.header("Access-Control-Allow-Methods","*")
+  //   if (req.method === 'OPTIONS') {
+  //     return res.sendStatus(200); // Respond with 200 for OPTIONS requests
+  //   }
+
+  //   next();
+
+
+  // })
 
 
 }
