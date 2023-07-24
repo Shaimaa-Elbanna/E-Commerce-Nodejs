@@ -25,10 +25,32 @@ const initServer = (express, app) => {
       express.json({})(req, res, next)
     }
   })
+  
+  app.use(cors())
+  app.options('*', cors());
+
+
+  app.use('/upload', express.static(path.join(__dirName, '../upload')))
+  app.use('/category', categoryRouter)
+  app.use('/subcategory', subcategoryRouter)
+  app.use('/auth', authRouter)
+  app.use('/copoun', copounRouter)
+  app.use('/brand', brandRouter)
+  app.use('/product', productRouter)
+  app.use('/cart', cartRouter)
+  app.use('/order', orderRouter)
+  app.use('/review', reviewsRouter)
+
+  app.use("*", (req, res, next) => { res.status(404).json("page is not found") })
+
+
+  dbConnection()
+
+  app.use(globalErrorHandling)
 
 
 
-  // const  whitelist = ['http://localhost:3000']
+    // const  whitelist = ['http://localhost:3000']
 
   // app.use(async(req,res,next)=>{
 
@@ -57,30 +79,6 @@ const initServer = (express, app) => {
 
   // })
 
-
-  
-  
-  app.use(cors())
-  app.options('*', cors());
-
-
-  app.use('/upload', express.static(path.join(__dirName, '../upload')))
-  app.use('/category', categoryRouter)
-  app.use('/subcategory', subcategoryRouter)
-  app.use('/auth', authRouter)
-  app.use('/copoun', copounRouter)
-  app.use('/brand', brandRouter)
-  app.use('/product', productRouter)
-  app.use('/cart', cartRouter)
-  app.use('/order', orderRouter)
-  app.use('/review', reviewsRouter)
-
-  app.use("*", (req, res, next) => { res.status(404).json("page is not found") })
-
-
-  dbConnection()
-
-  app.use(globalErrorHandling)
 }
 
 
