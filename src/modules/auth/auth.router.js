@@ -8,7 +8,7 @@ import cloudFileUpload from "../../utilies/cloudinaryUploder.js";
 const router = Router()
 
 
-router.post('/signup',authController.signup)
+router.post('/signup',cloudFileUpload(fileValidation.img).single('userImage'),isValid(signupSchema), authController.signup)
 
 
 
