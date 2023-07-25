@@ -11,6 +11,7 @@ const router = Router()
 router.post('/signup',cloudFileUpload(fileValidation.img).single('userImage'),isValid(signupSchema), authController.signup)
 
 
+
 router.get('/users',authController.getAllUSers)
 router.get('/confirmEmail/:token',authController.confirmEmail)
 
@@ -28,7 +29,10 @@ router.patch ('/sendCode', isValid(sendCodeSchema), authController.sendCode)
 router.post ('/forgetPassword', isValid(forgetPasswordSchema), authController.forgetPassword)
 
 
-
+app.post('/test', (req, res) => {
+    console.log(req.body);
+    res.json({ message: 'Test route works!' });
+  });
 
 
 
