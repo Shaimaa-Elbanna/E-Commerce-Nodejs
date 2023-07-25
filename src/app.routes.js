@@ -40,6 +40,10 @@ const initServer = (express, app) => {
   app.use('/cart', cartRouter)
   app.use('/order', orderRouter)
   app.use('/review', reviewsRouter)
+  app.post('/test', (req, res) => {
+    console.log(req.body);
+    res.json({ message: 'Test route works!' });
+  });
 
   app.use("*", (req, res, next) => { res.status(404).json("page is not found") })
 
