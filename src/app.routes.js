@@ -25,15 +25,8 @@ const initServer = (express, app) => {
       express.json({})(req, res, next)
     }
   })
-  const  whitelist = ['http://localhost:3000']
 
-  app.use(cors({
-    origin: whitelist,
-    allowedHeaders: '*',
-    exposedHeaders: '*',
-    methods: '*',
-    
-  }))
+  app.use(cors())
   
 
 
