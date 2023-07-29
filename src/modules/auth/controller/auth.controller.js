@@ -322,10 +322,10 @@ export const login = asyncErrorHandler(async (req, res, next) => {
     if (!user) {
         return next(new AppError('email is not rejesterd', 400))
     }
-    if (!user.confirmEmail) {
-        return next(new AppError('you must confirm your email ,check your mail box', 404))
+    // if (!user.confirmEmail) {
+    //     return next(new AppError('you must confirm your email ,check your mail box', 404))
 
-    }
+    // }
 
     // const compare = comparePassword({ plaintext: password, hashValue: user.password })
     if (!comparePassword({ Plaintext: password, hashValue: user.password })) {
