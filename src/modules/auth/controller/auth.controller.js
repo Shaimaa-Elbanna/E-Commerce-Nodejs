@@ -26,7 +26,7 @@ export const getAllUSers =asyncErrorHandler(async(req,res,next)=>{
 
 export const signup = asyncErrorHandler(async (req, res, next) => {
 
-    const { name, email, password } = req.body
+    const { name, email, password ,gender , phone} = req.body
 
     console.log(req.body);
 
@@ -146,7 +146,9 @@ const send =    await sendEmail({ to: email, subject: 'confirm you email', html 
         email,
         password: hashPass,
         image: req.body.image,
-        customId
+        customId,
+        gender,
+        phone
     })
     // const users = userModel.save()
     if (req.file) {
