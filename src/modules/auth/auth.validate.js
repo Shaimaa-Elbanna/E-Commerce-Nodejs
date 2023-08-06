@@ -15,6 +15,7 @@ export const signupSchema = joi.object({
     password: generalFields.password.required(),
     confirmPassword: generalFields.confirmPassword.valid(joi.ref("password")),
     phone: joi.string().length(12).optional(),
+    DOB: joi.string().optional(),
     gender: joi.string().valid('male', 'female').optional(),
 
 

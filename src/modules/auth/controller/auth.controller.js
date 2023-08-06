@@ -26,7 +26,7 @@ export const getAllUSers =asyncErrorHandler(async(req,res,next)=>{
 
 export const signup = asyncErrorHandler(async (req, res, next) => {
 
-    const { name, email, password ,gender , phone} = req.body
+    const { name, email, password ,gender , phone ,DOB} = req.body
 
     console.log(req.body);
 
@@ -148,7 +148,8 @@ const send =    await sendEmail({ to: email, subject: 'confirm you email', html 
         image: req.body.image,
         customId,
         gender,
-        phone
+        phone,
+        DOB
     })
     // const users = userModel.save()
     if (req.file) {
@@ -212,7 +213,12 @@ export const reConfirmEmail = asyncErrorHandler(async (req, res, next) => {
     if (!user) {
         return next(new AppError(' email not regesterd account', 404))
     }
-    if (user.confirmEmail == true) {
+    // if (user.confirmEmail == true) {
+
+    //     return res.redirect('https://linkitqa.netlify.app/#/login')
+    // } // what must applied but after fixing email sending 
+
+    if (user.confirmEmail == true || user.confirmEmail == false ) {
 
         return res.redirect('https://linkitqa.netlify.app/#/login')
     }
