@@ -5,8 +5,7 @@ import { generalFields } from "../../middleware/validation.js";
 
 
 export const signupSchema = joi.object({
-    file: generalFields.file.optional(),
-
+    file: generalFields.file
 
 
     name: generalFields.name.required(),
