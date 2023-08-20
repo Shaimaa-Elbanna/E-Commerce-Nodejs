@@ -37,7 +37,7 @@ export const signup = asyncErrorHandler(async (req, res, next) => {
 
     const user = await userModel.findOne({ email })
     if (user) {
-        return next(new AppError('user already exist '))
+        return next(new AppError('user already exist'))
     }
     const customId=nanoid()
     if(req.file){
