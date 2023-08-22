@@ -7,6 +7,7 @@ import { endPoint } from './cart.endPoint.js';
 const router =Router()
 
 
+router.get ('/',auth(endPoint.create),cartController.getCart)
 router.post ('/',auth(endPoint.create),cartController.createCart)
 
 router.patch ('/remove',auth(endPoint.create),cartController.removeCart)

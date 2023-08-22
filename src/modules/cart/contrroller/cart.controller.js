@@ -2,6 +2,14 @@ import { AppError, asyncErrorHandler } from "../../../utilies/errorHandling.js";
 import productModel from '../../../../DB/models/product.model.js'
 import cartModel from "../../../../DB/models/cart.model.js";
 
+
+
+
+export const getCart=asyncErrorHandler(async(req,res,next)=>{
+    const cart =await cartModel.find({})
+    return cart? res.status(200).json({message:"done",cart}): next(new AppError('Ino cart yet', 400));
+})
+
 // export const createCart = asyncErrorHandler(async (req, res, next) => {
 
 //     const { productId, quantity } = req.body
@@ -100,7 +108,7 @@ import cartModel from "../../../../DB/models/cart.model.js";
 
 export const createCart = asyncErrorHandler(async (req, res, next) => {
     const { products } = req.body; // Assuming products is an array of objects containing productId and quantity
-
+ console.log(products);
     if (!Array.isArray(products) || products.length === 0) {
         return next(new AppError('Invalid products data', 400));
     }
