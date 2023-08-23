@@ -6,7 +6,7 @@ import cartModel from "../../../../DB/models/cart.model.js";
 
 
 export const getCart=asyncErrorHandler(async(req,res,next)=>{
-    const cart =await cartModel.find({})
+    const cart =await cartModel.find({userId:req.user._id})
     return cart? res.status(200).json({message:"done",cart}): next(new AppError('Ino cart yet', 400));
 })
 
