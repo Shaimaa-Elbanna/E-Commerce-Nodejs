@@ -171,14 +171,20 @@ return cart.modifiedCount
 
 export async function removeAllCartItems(userId) {
 
-    const cart =   await cartModel.updateOne({ userId }, {
-       
-            products:[]
-        
-    })
+    const cart =   await cartModel.deleteOne({ userId })
 
 return cart.modifiedCount
 }
+// export async function removeAllCartItems(userId) {
+
+//     const cart =   await cartModel.updateOne({ userId }, {
+       
+//             products:[]
+        
+//     })
+
+// return cart.modifiedCount
+// }
 
 export const clearCart = asyncErrorHandler(async (req, res, next) => {
 
