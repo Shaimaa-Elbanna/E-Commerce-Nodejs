@@ -3,6 +3,7 @@ import categoryModel from "../../../../DB/models/category.model.js";
 import { AppError, asyncErrorHandler } from "../../../utilies/errorHandling.js";
 import { nanoid } from "nanoid";
 import cloudinary from "../../../utilies/cloudinary.js";
+import ApiFeatures from "../../../utilies/apiFeatures.js";
 
 
 
@@ -49,11 +50,13 @@ export const createCategory = asyncErrorHandler(async (req, res, next) => {
 
 export const getAllCategory = asyncErrorHandler(async (req, res, next) => {
 
-    const category = await categoryModel.find({
+
+    const apiFeatures=new ApiFeatures(req.query,categoryModel.find({
 
     }).populate([{
         path: 'subcategoty'
-    }])
+    }])).filter
+    const category = await apiFeatures.mongooseQuery
 
     res.status(201).json({ message: 'done', category })
 
