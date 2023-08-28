@@ -16,7 +16,7 @@ router.put('/:subCategoryId',auth(endPoint.update),cloudFileUpload(fileValidatio
 router.delete('/:subCategoryId',auth(endPoint.delete), isValid(deleteSubCategorySchema), subCategoryController.deleteSubCategory)
 
 
-router.get('/', auth(endPoint.get),subCategoryController.getAllSubCategory)
+router.get('/', subCategoryController.getAllSubCategory)
 
 
 

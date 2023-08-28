@@ -20,7 +20,7 @@ router.put('/:categoryId',auth(endPoint.update) ,cloudFileUpload(fileValidation.
 router.delete('/:categoryId',auth(endPoint.delete), isValid(deleteCategorySchema), categoryController.deleteCategory)
 
 
-router.get('/', auth(endPoint.get),categoryController.getAllCategory)
+router.get('/',categoryController.getAllCategory)
 
 
 
