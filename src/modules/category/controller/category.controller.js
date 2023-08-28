@@ -55,7 +55,7 @@ export const getAllCategory = asyncErrorHandler(async (req, res, next) => {
 
     }).populate([{
         path: 'subcategoty'
-    }])).filter
+    }])).filter()
     const category = await apiFeatures.mongooseQuery
 
     res.status(201).json({ message: 'done', category })
