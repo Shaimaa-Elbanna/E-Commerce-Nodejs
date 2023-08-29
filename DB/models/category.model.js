@@ -4,8 +4,9 @@ const categorySchema = new Schema({
 
     name: {
         type: String,
-        require: true
-        , lowecase: true
+        require: true,
+        unique: true,
+         lowecase: true
     },
     slug: {
         type: String,

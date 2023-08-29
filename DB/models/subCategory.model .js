@@ -4,6 +4,7 @@ const subCategorySchema =new Schema({
 
    name: {
     type:String,
+    unique: true,
     require:true
    },
    customId: {
