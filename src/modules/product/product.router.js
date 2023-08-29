@@ -34,6 +34,10 @@ auth(endPoint.update)
 
 
 
+router.get('/wishlsit',  auth(endPoint.wishlist), isValid(validators.addToUserWishlistSchema)
+, productContoller.getWishlist)
+
+
 router.patch('/:productId/wishlsit',  auth(endPoint.wishlist), isValid(validators.addToUserWishlistSchema)
 , productContoller.addToUserWishlist)
 router.patch('/:productId/removeWishlist',  auth(endPoint.wishlist) , isValid(validators.removeFromUserWishlistSchema)

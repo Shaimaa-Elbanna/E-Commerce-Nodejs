@@ -213,7 +213,18 @@ export const updateProduct = asyncErrorHandler(async (req, res, next) => {
 
 
 
-export const addToUserWishlist = asyncErrorHandler(async (req, res, next) => {
+export const  getWishlist = asyncErrorHandler(async (req, res, next) => {
+
+
+  
+
+const wishlist = await userModel.find({_id:req.user._id},{userWishList:1})
+
+    return res.status(200).json({ message: 'done', wishlist })
+})
+
+
+export const  addToUserWishlist = asyncErrorHandler(async (req, res, next) => {
 
 
     if (! await productModel.findById(req.params.productId)) {
