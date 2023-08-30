@@ -18,7 +18,7 @@ const subCategorySchema =new Schema({
    imag: {
     type:Object,
     require:true
-   },pro
+   },
 
    createdBy:{type:Types.ObjectId,ref:'User',require:true,lowecase:true},
    updatedBy:{type:Types.ObjectId,ref:'User'},
