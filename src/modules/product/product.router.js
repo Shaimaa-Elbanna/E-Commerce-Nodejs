@@ -34,7 +34,7 @@ auth(endPoint.update)
 
 
 
-router.get('/wishlist',  auth(endPoint.wishlist), isValid(validators.addToUserWishlistSchema)
+router.get('/wishlist',  auth(endPoint.wishlist)
 , productContoller.getWishlist)
 
 
