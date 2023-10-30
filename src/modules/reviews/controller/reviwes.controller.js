@@ -34,6 +34,7 @@ export const createReview = asyncErrorHandler(async (req, res, next) => {
         orderId: checkOrder._id,
         createdBy: req.user._id,
         productId,
+        $inc:{numReviews:1}
     })
 
     return res.status(201).json({ message: "Done", review })
