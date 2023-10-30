@@ -5,7 +5,7 @@ const reviewsSchema = new Schema({
     orderId: { type: Types.ObjectId, ref: "Order", required: true },
     createdBy: { type: Types.ObjectId, ref: "User", required: true },
     rate: { type: Number, min: 1, max: 5, require: true },
-    numReviews: { type: Number, min: 1, max: 5},
+    numReviews: { type: Number},
     comment: { type: String }
 
 
