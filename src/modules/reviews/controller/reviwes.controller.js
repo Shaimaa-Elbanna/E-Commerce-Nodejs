@@ -12,7 +12,7 @@ export const createReview = asyncErrorHandler(async (req, res, next) => {
 
     const checkOrder = await orderModel.findOne({
         userId: req.user._id,
-        orderStatus: "deliverd",
+        orderStatus: "deliverd"||"placed",
         "products.productId": productId,
 
     })
